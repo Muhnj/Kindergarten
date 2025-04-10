@@ -1,0 +1,41 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width,initial-scale=1")
+title Children List - Kindergarten System
+link(rel="stylesheet", href="/css/childrenlist.css")
+.sidebar
+  h2(style="text-align: center; padding: 15px;") Kindergarten
+  ul
+    li(onclick="/admin") Dashboard
+    li(onclick="location.href=\'register_child.html\'") Register Child
+    li.active Children List
+    li Reports
+    li Settings
+    li Logout
+.main-content
+  .header
+    h1 Children List
+    button.add-child-btn(onclick="location.href=\'register_child.html\'") Add New Child
+  .search-bar
+    input(type="text", placeholder="Search children...")
+    button Search
+  table
+    thead
+      tr
+        th ID
+        th Child Name
+        th Parent Name
+        th Age
+        th Class
+        th Residence
+        th Actions
+    tbody
+      tr
+        td 1
+        td Emma Johnson
+        td Sarah Johnson
+        td 4
+        td KG 1
+        td 123 Main St
+        td
+          button.action-btn.edit-btn Edit
+          button.action-btn.delete-btn Delete

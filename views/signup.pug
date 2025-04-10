@@ -1,0 +1,35 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width,initial-scale=1")
+title Admin Signup - Kindergarten System
+link(rel="stylesheet", href="/css/signup.css")
+.container
+  h1 Admin Registration
+  form#adminSignupForm(action="/signingup" method="post")
+    .form-group
+      label(for="firstName") First Name:
+      input#firstName(type="text", name="fname")
+    .form-group
+      label(for="lastName") Last Name:
+      input#lastName(type="text", name="lname")
+    .form-group
+      label(for="email") Email:
+      input#email(type="email", name="email")
+    .form-group
+      label(for="phone") Phone Number:
+      input#phone(type="tel", name="phone")
+    .form-group
+      label(for="gender") Gender:
+      select#gender(name="gender")
+        option(value) Select Gender
+        option(value="male") Male
+        option(value="female") Female
+    .form-group
+      label(for="address") Address:
+      input#address(type="text", name="address")
+    .form-group
+      label(for="password") Password:
+      input#password(type="password", name="password")
+    .form-group
+      label(for="confirmPassword") Confirm Password:
+      input#confirmPassword(type="password", name="confirmpassword")
+    button(type="submit") Register

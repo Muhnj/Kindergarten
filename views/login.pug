@@ -1,0 +1,30 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width,initial-scale=1")
+title Kindergarten System - Login
+link(rel="stylesheet", href="/css/login.css")
+.login-container
+  .login-header
+    h1 Kindergarten System
+    p Welcome back! Please login to continue
+  .login-tabs
+    button.tab-btn.active Login    
+  .tab-content.active#admin-login
+    form.login-form#adminForm(action="/login" method="post")
+      .form-group
+        label(for="admin-email") Email Address
+        input#admin-email(type="email", placeholder="Enter your email", name="email" )
+        //- .error-message#admin-email-error Please enter a valid email address
+      .form-group
+        label(for="admin-password") Password
+        input#admin-password(type="password", placeholder="Enter your password", name="password")
+        //- .error-message#admin-password-error Password must be at least 6 characters
+      .remember-forgot
+        .remember-me
+          //- input#admin-remember(type="checkbox")
+          //- label(for="admin-remember") Remember me
+        a.forgot-password(href="#") Forgot password?
+      button.login-btn(type="submit") Login   
+  .login-footer
+    | 
+    p Don't have an account? 
+    a(href="/signingup") Sign up here

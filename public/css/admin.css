@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.sidebar {
+  width: 200px;
+  background-color: #2e8b57;
+  height: 100vh;
+  position: fixed;
+  color: white;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar li {
+  padding: 15px;
+  border-bottom: 1px solid #3cb371;
+}
+.sidebar li:hover {
+  background-color: #3cb371;
+  cursor: pointer;
+}
+.sidebar li.active {
+  background-color: #228b22;
+}
+.main-content {
+  margin-left: 200px;
+  padding: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+.stat-card {
+  background-color: #f0f8ff;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  width: 22%;
+}
+.stat-card h3 {
+  color: #2e8b57;
+}

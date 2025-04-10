@@ -1,0 +1,35 @@
+meta(charset="UTF-8")
+meta(name="viewport", content="width=device-width,initial-scale=1")
+title Register Child - Kindergarten System
+link(rel="stylesheet", href="/css/registerchild.css")
+.container
+  h1 Register a Child
+  form#childRegistrationForm(action="/addition" method="post")
+    .form-row
+      .form-group
+        label(for="childFirstName") Child's First Name:
+        input#childFirstName(type="text", name="firstname")
+      .form-group
+        label(for="childLastName") Child's Last Name:
+        input#childLastName(type="text", name="lastname")
+    .form-group
+      label(for="parentName") Parent/Guardian Name:
+      input#parentName(type="text", name="parentname")
+    .form-row
+      .form-group
+        label(for="age") Age:
+        input#age(type="number", name="age")
+      .form-group
+        label(for="class") Class:
+        select#class(name="class")
+          option(value) Select Class
+          option(value="baby") Baby
+          option(value="middle") Middle
+          option(value="top") Top
+    .form-group
+      label(for="residence") Residence:
+      input#residence(type="text", name="residence")
+    .form-group
+      label(for="additionalNotes") Additional Notes:
+      textarea#additionalNotes(rows="3", style="width: 100%;" name="notes")
+    button(type="submit") Register Child
