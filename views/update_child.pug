@@ -1,35 +1,74 @@
 meta(charset="UTF-8")
 meta(name="viewport", content="width=device-width,initial-scale=1")
-title Register Child - Kindergarten System
+title Update Child - Kindergarten System
 link(rel="stylesheet", href="/css/registerchild.css")
-.container
-  h1 Update Child Details
-  form#childRegistrationForm(action="/updatechild" method="post")
-    .form-row
+link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css")
+
+.sidebar
+  .sidebar-header
+    h2 Kindergarten System
+  ul.sidebar-menu
+    li
+      a(href="/admin")
+        i.fas.fa-home
+        span Dashboard
+    li
+      a(href="/addition")
+        i.fas.fa-user-plus
+        span Register Child
+    li
+      a(href="/childrenslist").active
+        i.fas.fa-users
+        span Children List
+    li
+      a(href="/attendance")
+        i.fas.fa-clipboard-check
+        span Attendance
+    li
+      a(href="/reports")
+        i.fas.fa-chart-bar
+        span Reports
+    li
+      a(href="/settings")
+        i.fas.fa-cog
+        span Settings
+    li
+      a(href="/logout")
+        i.fas.fa-sign-out-alt
+        span Logout
+
+.main-content
+  .container
+    h1 Update Child Details
+    form#childRegistrationForm(action=`/updatechild/${children._id}` method="post")
+      .form-row
+        .form-group
+          label(for="childFirstName") Child's First Name:
+          input#childFirstName(type="text", name="firstname", value=children.firstname)
+        .form-group
+          label(for="childLastName") Child's Last Name:
+          input#childLastName(type="text", name="lastname", value=children.lastname)
       .form-group
-        label(for="childFirstName") Child's First Name:
-        input#childFirstName(type="text", name="firstname")
+        label(for="parentName") Parent/Guardian Name:
+        input#parentName(type="text", name="parentname", value=children.parentname)
+      .form-row
+        .form-group
+          label(for="age") Age:
+          input#age(type="number", name="age", value=children.age)
+        .form-group
+          label(for="class") Class:
+          select#class(name="class")
+            option(value="") Select Class
+            option(value="baby", selected=children.class === 'baby') Baby
+            option(value="middle", selected=children.class === 'middle') Middle
+            option(value="top", selected=children.class === 'top') Top
       .form-group
-        label(for="childLastName") Child's Last Name:
-        input#childLastName(type="text", name="lastname")
-    .form-group
-      label(for="parentName") Parent/Guardian Name:
-      input#parentName(type="text", name="parentname")
-    .form-row
-      .form-group
-        label(for="age") Age:
-        input#age(type="number", name="age")
-      .form-group
-        label(for="class") Class:
-        select#class(name="class")
-          option(value) Select Class
-          option(value="baby") Baby
-          option(value="middle") Middle
-          option(value="top") Top
-    .form-group
-      label(for="residence") Residence:
-      input#residence(type="text", name="residence")
-    .form-group
-      label(for="additionalNotes") Additional Notes:
-      textarea#additionalNotes(rows="3", style="width: 100%;" name="notes")
-    button(type="submit") Update Child Details
+        label(for="residence") Residence:
+        input#residence(type="text", name="residence", value=children.residence)
+      .form-actions
+        button.submit-btn(type="submit")
+          i.fas.fa-save
+          | Update Child Details
+        a.cancel-btn(href="/childrenslist")
+          i.fas.fa-times
+          | Cancel

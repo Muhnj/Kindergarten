@@ -2,32 +2,122 @@ meta(charset="UTF-8")
 meta(name="viewport", content="width=device-width,initial-scale=1")
 title Dashboard - Kindergarten System
 link(rel="stylesheet", href="/css/admin.css")
+link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css")
+
 .sidebar
-  h2(style="text-align: center; padding: 15px;") Kindergarten
-  ul
-    li.active Dashboard
-    li(onclick="") Register Child
-    li(onclick="") Children List
-    li Reports
-    li Settings
-    li Logout
+  .sidebar-header
+    h2 Kindergarten System
+  ul.sidebar-menu
+    li.active
+      a(href="/admin")
+        i.fas.fa-home
+        span Dashboard
+    li
+      a(href="/addition")
+        i.fas.fa-user-plus
+        span Register Child
+    li
+      a(href="/childrenslist")
+        i.fas.fa-users
+        span Children List
+    li
+      a(href="/attendance")
+        i.fas.fa-clipboard-check
+        span Attendance
+    li
+      a(href="/reports")
+        i.fas.fa-chart-bar
+        span Reports
+    li
+      a(href="/settings")
+        i.fas.fa-cog
+        span Settings
+    li
+      a(href="/login")
+        i.fas.fa-sign-out-alt
+        span Logout
+
 .main-content
   .header
     h1 Dashboard
-    div Welcome, Admin!
-  .stats
+    .welcome-message
+      i.fas.fa-user-shield
+      span Welcome, Admin!
+  
+  .stats-container
     .stat-card
-      h3 Total Children
-      p#totalChildren 0
+      .stat-icon(style="background-color: #2e8b57;")
+        i.fas.fa-child
+      .stat-info
+        h3 Total Children
+        p#totalChildren 142
     .stat-card
-      h3 New This Month
-      p#newChildren 0
+      .stat-icon(style="background-color: #3cb371;")
+        i.fas.fa-baby
+      .stat-info
+        h3 New This Month
+        p#newChildren 18
     .stat-card
-      h3 Classes
-      p 5
+      .stat-icon(style="background-color: #ffa500;")
+        i.fas.fa-chalkboard-teacher
+      .stat-info
+        h3 Classes
+        p 5
     .stat-card
-      h3 Upcoming Events
-      p 2
+      .stat-icon(style="background-color: #3498db;")
+        i.fas.fa-calendar-alt
+      .stat-info
+        h3 Upcoming Events
+        p 2
+  
   .recent-activity
-    h2 Recent Activity
-    //  Activity log would go here 
+    h2 
+      i.fas.fa-history
+      span Recent Activity
+    .activity-list
+      .activity-item
+        .activity-icon
+          i.fas.fa-user-plus
+        .activity-details
+          strong New registration: 
+          | Felicity Akol (Baby Class)
+          .activity-time 2 hours ago
+      .activity-item
+        .activity-icon
+          i.fas.fa-edit
+        .activity-details
+          strong Updated record: 
+          | Benge Benjamin (Top Class)
+          .activity-time Yesterday, 3:45 PM
+      .activity-item
+        .activity-icon
+          i.fas.fa-check-circle
+        .activity-details
+          strong Attendance taken: 
+          | Middle Class (98% present)
+          .activity-time Today, 9:15 AM
+      .activity-item
+        .activity-icon
+          i.fas.fa-exclamation-triangle
+        .activity-details
+          strong Payment reminder: 
+          | 5 parents with pending fees
+          .activity-time 2 days ago
+  
+  .quick-actions
+    h2
+      i.fas.fa-bolt
+      span Quick Actions
+    .action-buttons
+      a.action-btn(href="/addition")
+        i.fas.fa-user-plus
+        span Register Child
+      a.action-btn(href="/childrenslist")
+        i.fas.fa-list
+        span View All Children
+      a.action-btn(href="/attendance")
+        i.fas.fa-clipboard-check
+        span Take Attendance
+      a.action-btn(href="/reports")
+        i.fas.fa-file-alt
+        span Generate Report

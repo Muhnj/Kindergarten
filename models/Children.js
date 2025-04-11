@@ -5,7 +5,7 @@ const ChildrenSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  firstname: {
+  lastname: {
     type: String,
     trim: true,
   },

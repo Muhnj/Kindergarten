@@ -22,36 +22,42 @@ router.post("/addition", async (req, res) => {
 });
 router.get("/childrenslist", async (req, res) => {
   try {
-    const items = await Children.find().sort({ $natural: -1 });
+    const childrens = await Children.find().sort({ $natural: -1 });
     res.render("children_list", {
-      Childrens: items,
+      childrens: childrens  // or just { childrens } using ES6 shorthand
     });
   } catch (error) {
+    console.error(error);  // Always log the error for debugging
     res.status(400).send("unable to find children in the db");
   }
 });
 router.get("/updatechild/:id", async (req, res) => {
   try {
-    const updateChildren= await Children.findOne({ _id: req.params.id });
+    const updateChildren = await Children.findOne({ _id: req.params.id });
+    if (!updateChildren) {
+      return res.status(404).send("Child not found");
+    }
     res.render("update_child", {
-      children: updateChildren,
+      children: updateChildren  // Keep using 'children' to match your template
     });
   } catch (error) {
-    res.status(400).send("unable to find this child in the db");
+    console.error("Update error:", error);
+    res.status(400).send("Unable to find this child in the db");
   }
 });
-router.post("/updatechild", async (req, res) => {
+router.post("/updatechild/:id", async (req, res) => {
   try {
-    await Children.findOneAndUpdate({ _id:req.query.id }, req.body);
-    res.redirect("/childrensList");
+    await Children.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect("/childrenslist");
   } catch (error) {
-    res.status(400).send("unable to find this child in the db");
+    console.error("Update error:", error);
+    res.status(400).send("Unable to update child");
   }
 });
 router.post("/deletechild", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
   try {
     await Children.deleteOne({ _id: req.body.id });
-    res.redirect("back");
+    res.redirect("children_list");
   } catch (error) {
     res.status(400).send("unable to delete this Child in the db");
   }
